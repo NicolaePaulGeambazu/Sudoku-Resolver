@@ -1,0 +1,140 @@
+$primaryColor: #4caf50;
+$primaryColorDark: darken($primaryColor, 10%);
+$secondaryColor: #f44336;
+$secondaryColorDark: darken($secondaryColor, 10%);
+$borderColor: #000;
+$cellHeight: 40px;
+$cellFontSize: 16px;
+$cellPadding: 10px;
+$popupBorderColor: #00aa00;
+$popupBackgroundColor: #ccffcc;
+$popupZIndex: 999;
+$popupVisible: visible;
+
+
+.sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 2px solid $borderColor;
+
+  .board-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    border-bottom: 2px solid $borderColor;
+  }
+
+  .board-row {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid $borderColor;
+  }
+
+  .board-cell {
+    flex: 1;
+    padding: $cellPadding;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: $cellFontSize;
+    font-weight: bold;
+    background-color: #fff;
+
+    &:nth-child(3n) {
+      border-right: 2px solid $borderColor;
+    }
+  }
+}
+
+.solve-button,
+.reset-button {
+  padding: $cellPadding;
+  font-size: $cellFontSize;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.solve-button {
+  background-color: $primaryColor;
+  color: #fff;
+}
+
+.solve-button:hover {
+  background-color: $primaryColorDark;
+}
+
+.reset-button {
+  background-color: $secondaryColor;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.reset-button:hover {
+  background-color: $secondaryColorDark;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 10% 0;
+}
+
+.sudoku-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.board-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.board-cell {
+  width: 100%;
+  height: $cellHeight;
+  padding: $cellPadding;
+  font-size: $cellFontSize;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+
+.board-cell:hover {
+  background-color: #ddd;
+}
+
+.success-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: $cellPadding;
+  border: 2px solid $popupBorderColor;
+  background-color: $popupBackgroundColor;
+  z-index: $popupZIndex;
+
+  &.#{$popupVisible} {
+    display: block;
+  }
+
+  .popup-content {
+    text-align: center;
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: $cellPadding;
+      font-size: $cellFontSize;
+      cursor: pointer;
+    }
+  }
+}
